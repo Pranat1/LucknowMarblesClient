@@ -310,6 +310,7 @@ const getSalesQuery = gql`
     sales {
       id
       billNumber
+      date
     }
   }
 `;
@@ -340,11 +341,20 @@ const getProductQuery = gql`
               length
               width
               nameId
+              id
             }
           }
     }
 }
 `;
+
+const editPieceSaleMutation = gql`
+    mutation EditPieceSale($pieceId: ID, $saleId: ID){
+      editPieceSale(pieceId:$pieceId, saleId:$saleId){
+        sailId
+      }
+    }
+`
 
 
 export {
@@ -371,4 +381,5 @@ export {
   getDiscreteProductEntryQuery,
   addDiscretePurchaseMutation,
   addRefundMutation,
+  editPieceSaleMutation
 };

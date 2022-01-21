@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import { getProductsQuery } from '../../queries/queries';
 import {flowRight as compose} from 'lodash';
-import ProductDetails from './ProductDetails'
+import ProductDetailsNew from './ProductDetailsNew'
 
 
 class DisplayProducts extends Component {
@@ -47,7 +47,7 @@ class DisplayProducts extends Component {
                 <tr><th>Products Name</th></tr>
                 {this.displayProducts()}
                 </table>
-                <ProductDetails productId={this.state.selected}/>
+                <ProductDetailsNew productId={this.state.selected}/>
             </div>
         );
     } 
