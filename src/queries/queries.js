@@ -12,6 +12,10 @@ const getProductsQuery = gql`
       placeOfOrigin
       lotts{
         pieces{
+          sale{
+            id
+            billNumber
+          }
           length
           width
         }
@@ -342,6 +346,9 @@ const getProductQuery = gql`
               width
               nameId
               id
+              sale{
+                billNumber
+              }
             }
           }
     }
@@ -349,9 +356,9 @@ const getProductQuery = gql`
 `;
 
 const editPieceSaleMutation = gql`
-    mutation EditPieceSale($pieceId: ID, $saleId: ID){
+    mutation EditPieceSale($pieceId: ID!, $saleId: ID!){
       editPieceSale(pieceId:$pieceId, saleId:$saleId){
-        sailId
+        saleId
       }
     }
 `

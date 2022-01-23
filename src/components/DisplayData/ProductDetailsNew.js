@@ -15,7 +15,7 @@ class ProductDetailsNew extends Component {
     }
     
     displayProductDetails(){
-        const { product } = this.props.getProductQuery.data;
+        const { product } = this.props.data;
         if(product){
             return(
                 <div>
@@ -36,11 +36,14 @@ class ProductDetailsNew extends Component {
                     <ul className="other-books">
                         { product.lotts.map(lott => {
                             return <div><h3>{lott.nameId}</h3> {lott.pieces.map(piece => {
-                                return  <button onClick={(e) => {
+                                console.log(piece.sale.billNumber)
+                                
+                                if(piece.sale.billNumber == "1011"){return  <button onClick={(e) => {
                                     this.submitClick(e);
                                     this.setState({ pieceId: piece.id     
                                     })
-                                }}>{piece.length}   X   {piece.width}</button>
+                                }}>{piece.nameId} + {piece.length}   X   {piece.width}</button>}
+                            
                             })}</div>
                         })}
                     </ul>
@@ -54,9 +57,9 @@ class ProductDetailsNew extends Component {
         var data = this.props.getSalesQuery;
         //var data = this.props.data;
         if(data.loading){
-            return( <option disabled>Loading Sails</option> );
+            return( <option disabled>Loading Sales</option> );
         } else {
-            return data.sails.map(item => {
+            return data.sales.map(item => {
                 return( <option key={ item.id
                 } value={item.id
                 }>{ item.billNumber + " " + item.date}</option> );

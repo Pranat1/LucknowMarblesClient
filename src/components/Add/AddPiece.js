@@ -125,7 +125,7 @@ class AddPiece extends Component {
                 <div className="field">
                     <label>Sale:</label>
                     <select onChange={ (e) => this.setState({ saleId: e.target.value }) } >
-                        <option>Select Sale</option>
+                        <option value = "">Select Sale</option>
                         { this.displaySale() }
                     </select>
                 </div>
